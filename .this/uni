@@ -1,5 +1,7 @@
 ---
 - hosts: local
+  vars:
+    type: package_manager
 
   roles:
   - role: Atom
