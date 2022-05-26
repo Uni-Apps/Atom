@@ -1,14 +1,17 @@
 ---
-- debug:
-    msg: "Hello there"
-
 - name: Import GPG key
   ansible.builtin.rpm_key:
     state: present
     key: https://packagecloud.io/AtomEditor/atom/gpgkey
+  become: true
 
 - name: script to Add Repo
   ansible.builtin.script: atom.repo.sh
   args:
     creates: /etc/yum.repos.d/atom.repo
   become: true
+
+- name: Install Atom
+  dnf:
+    name: "{{ version }}
+    state: latest
