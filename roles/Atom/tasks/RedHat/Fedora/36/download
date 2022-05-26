@@ -11,5 +11,6 @@
   dnf:
     name: /tmp/atom.x86_64.rpm
     state: present
+    disable_gpg_check: yes
   become: true
 
