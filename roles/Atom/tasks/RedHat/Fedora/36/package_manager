@@ -13,5 +13,6 @@
 
 - name: Install Atom
   dnf:
-    name: "{{ version }}
+    name: "{{ version }}"
     state: latest
+  become: true
