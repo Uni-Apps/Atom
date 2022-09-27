@@ -1,0 +1,16 @@
+---
+- debug:
+    msg: "hello world"
+
+- get_url:
+    url: https://atom-installer.github.com/v1.60.0/atom.x86_64.rpm
+    dest: /tmp/
+    checksum: "sha256:{{ rpm_checksum_sha256 }}"
+
+- name: Install atom
+  dnf:
+    name: /tmp/atom.x86_64.rpm
+    state: present
+    disable_gpg_check: yes
+  become: true
+

@@ -1,0 +1,6 @@
+---
+- name: Install Atom from Snapcraft
+  become: yes
+  community.general.snap:
+    name:
+    - atom
