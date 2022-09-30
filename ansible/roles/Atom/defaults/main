@@ -1,3 +1,6 @@
 type: download
-version: atom
-# version: atom-beta
+
+# atom-beta
+beta: false
+
+apt_key: 'https://packagecloud.io/AtomEditor/atom/gpgkey'

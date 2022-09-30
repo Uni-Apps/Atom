@@ -1,0 +1,30 @@
+---
+
+- name: apt key
+  become: yes
+  ansible.builtin.apt_key:
+    url: "{{ apt_key }}"
+    state: present
+
+- name: apt sources
+  become: true
+  ansible.builtin.apt_repository:
+    repo: deb https://packagecloud.io/AtomEditor/atom/any/ any main
+    state: present
+    filename: atom
+
+- name: install atom
+  become: yes
+  ansible.builtin.apt:
+    pkg:
+    - atom
+  when: not beta
+  
+- name: install atom-beta
+  become: yes
+  ansible.builtin.apt:
+    pkg:
+    - atom-beta
+  when: beta
+  
+

@@ -12,7 +12,15 @@
   become: true
 
 - name: Install Atom
-  dnf:
-    name: "{{ version }}"
-    state: latest
   become: true
+  dnf:
+    name: atom
+    state: latest
+  when: not beta
+
+- name: Install Atom Beta
+  become: true
+  dnf:
+    name: atom-beta
+    state: latest
+  when: beta
